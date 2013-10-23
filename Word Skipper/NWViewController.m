@@ -46,10 +46,38 @@
     return [self wordList][(int)self.selectedWordStepper.value];
 }
 
+#pragma mark IBActions
+
 - (IBAction)updateSelectedWord {
     self.selectedWordStepper.maximumValue = [[self wordList] count] - 1;
     self.selectedWordLabel.text = [self selectedWord];
 }
 
+- (IBAction)underline {
+    [self addSelectedWordAttributes:@{NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle)}];
+    
+}
 
+- (IBAction)ununderline {
+    [self addSelectedWordAttributes:@{NSUnderlineStyleAttributeName : @(NSUnderlineStyleNone)}];
+    
+}
+
+#pragma mark Helper Methods
+
+
+-(void)addLabelAttributes:(NSDictionary *)attributes rnage:(NSRange)range
+{
+    if (range.location != NSNotFound) {
+        NSMutableAttributedString *mat = [self.label.attributedText mutableCopy];
+        [mat addAttributes:attributes range:range];
+        self.label.attributedText = mat;
+    }
+}
+
+-(void)addSelectedWordAttributes:(NSDictionary *)attributes
+{
+    NSRange range = [[self.label.attributedText string] rangeOfString:[self selectedWord]];
+    [self addLabelAttributes:attributes rnage:range];
+}
 @end

@@ -59,6 +59,9 @@
                                 <state key="normal" title="Underline">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="underline" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wxw-Ae-BLk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ck6-ZK-ehw">
                                 <rect key="frame" x="203" y="399" width="55" height="33"/>
@@ -75,6 +78,9 @@
                                 <state key="normal" title="No Underline">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ununderline" destination="vXZ-lx-hvc" eventType="touchUpInside" id="c6w-T3-ggJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYd-Vp-uvs">
                                 <rect key="frame" x="192" y="456" width="82" height="33"/>
