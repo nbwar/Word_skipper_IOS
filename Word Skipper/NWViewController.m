@@ -10,6 +10,11 @@
 
 @interface NWViewController ()
 
+@property (strong, nonatomic) IBOutlet UIStepper *selectedWordStepper;
+@property (strong, nonatomic) IBOutlet UILabel *selectedWordLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *label;
+
 @end
 
 @implementation NWViewController
@@ -17,13 +22,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [self updateSelectedWord];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
+
+-(NSArray *)wordList
+{
+    NSArray *wordList = [[self.label.attributedText string] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if ([wordList count]) {
+        return wordList;
+    } else {
+        return @[@""];
+    }
+}
+
+-(NSString *)selectedWord
+{
+    return [self wordList][(int)self.selectedWordStepper.value];
+}
+
+- (IBAction)updateSelectedWord {
+    self.selectedWordStepper.maximumValue = [[self wordList] count] - 1;
+    self.selectedWordLabel.text = [self selectedWord];
+}
+
 
 @end
